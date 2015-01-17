@@ -2,9 +2,12 @@
 
 import sys
 import html
+import locale
 
 import fbget
 #import twget
+
+locale.setlocale(locale.LC_ALL,'it_IT.UTF-8')
 
 def generatepost(post):
     newpost = post.copy()
@@ -54,15 +57,20 @@ def main():
   <body>
     <div id="header">
       <h1>Collegio Timpano @ social</h1>
+      by Enrico Polesel
     </div>
 """
 
     for post in sorted_posts:
         htmlcode+=generatepost(post)
 
-    htmlcode += """  </body>
-</html>
-"""
+    htmlcode += """    <div id="footer">
+Page generated with <a href="http://github.com/epol/socialsignage/">
+socialsignage</a>, a GPL licensed software written by
+<a href="http://uz.sns.it/~enrico/">Enrico Polesel</a>.
+    </div>
+  </body>
+</html> """
     outfile = open('feed.html','wb')
     outfile.write(htmlcode.encode('utf-8'))
     outfile.close()

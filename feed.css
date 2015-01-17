@@ -7,10 +7,14 @@ body {
 
 #header {
     margin: 10px;
+    font-size: 8pt;
+    text-align: center;
 }
 
 #header h1 {
     text-align: center;
+    font-size: 24pt;
+    margin: 4px 4px 1px 4px;
 }
     
 
@@ -64,4 +68,12 @@ body {
     max-width: 750px;
     max-height: 500px;
 }
-		
+
+#footer {
+
+}
+
+#footer a {
+    color: #4863a0;
+    text-decoration: none;
+}

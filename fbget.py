@@ -47,7 +47,7 @@ def elab(fbkey,post):
         out['author_name'] = post['from']['name']
         try:
             out['author_pic'] = get_profile_picture(fbkey,post['from']['id'])
-        except e:
+        except:
             out['author_pic'] = None
     else:
         return None

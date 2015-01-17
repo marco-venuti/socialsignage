@@ -1,5 +1,5 @@
 body {
-    width: 500px;
+    width: 750px;
     font-family: Century Gothic, sans-serif;
     background-color: #660000;
     color: #ccccff;
@@ -16,7 +16,7 @@ body {
 
 #post {
     display: table;
-    width: 500px;
+    width: 750px;
     height: auto;
     margin: 10px;
     border-style: hidden;
@@ -39,7 +39,7 @@ body {
 #author {
     display: table-cell;
     padding: 3px;
-    width: 400px;
+    width: 550px;
     font-size: 18pt;
 }
 
@@ -51,7 +51,7 @@ body {
 #time {
     display: table-cell,block;
     padding: 3px;
-    width: 100px;
+    width: 200px;
     font-size: 10pt;
     text-align: right;
 }
@@ -61,7 +61,7 @@ body {
 }
 
 #body img {
-    max-width: 500px;
-    height: auto;
+    max-width: 750px;
+    max-height: 500px;
 }
 		

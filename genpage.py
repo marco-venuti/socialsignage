@@ -20,7 +20,7 @@ def generatepost(post):
         newpost['author_piccode'] = ""
     else:
         newpost['author_piccode'] = "<img src=\""+post['author_pic']+"\" alt=\"{author_name} profile picture\">"
-    newpost['escapedtext'] = html.escape(post['text'])
+    newpost['escapedtext'] = html.escape(post['text'].replace('\n','<br>'))
     return """<div id="post">
   <div id="post_header">
     <div id="author">
@@ -52,6 +52,7 @@ def main():
   <head>
     <title>Social network posts for Collegio Timpano</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="refresh" content="5" >
     <link rel="stylesheet" type="text/css" href="feed.css" />
   </head>
   <body>

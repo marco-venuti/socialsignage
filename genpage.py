@@ -3,6 +3,7 @@
 import sys
 import html
 import locale
+import configparser
 
 import fbget
 #import twget
@@ -40,7 +41,9 @@ def generatepost(post):
 
 
 def main():
-    fbkey = sys.argv[1]
+    config = configparser.ConfigParser()
+    config.read('genconfig.ini')
+    fbkey = config['facebook']['access_token']
     posts = []
     posts += fbget.get(fbkey)
     # posts += twget.get(twkey)

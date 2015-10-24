@@ -17,6 +17,12 @@ body {
     margin: 4px 4px 1px 4px;
 }
     
+#headerposts {
+    height: Calc(100% - 25px);
+//    height: -moz-calc(100% - 25px);
+    overflow: hidden;
+}
+
 
 #post {
     display: table;
@@ -70,11 +76,17 @@ body {
     float:right;
 }
 
-#footer {
 
+#footer {
+    position: fixed;
+    bottom: 5px;
+    text-align: center;
+    width: 750px;
 }
 
 #footer a {
-    color: #4863a0;
+//    color: #4863a0;
+//    color: #99ffcc;
+    color: #ccccff;
     text-decoration: none;
 }

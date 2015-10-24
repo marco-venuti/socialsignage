@@ -22,7 +22,7 @@ def generatepost(post):
     else:
         newpost['author_piccode'] = "<img src=\""+post['author_pic']+"\" alt=\"{author_name} profile picture\">"
     newpost['escapedtext'] = html.escape(post['text'][:320]).replace('\n','<br>')
-    return """<div id="post">
+    return """  <div id="post">
   <div id="post_header">
     <div id="author">
       {author_piccode}
@@ -57,20 +57,24 @@ def main():
   <head>
     <title>Social network posts for Collegio Timpano</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="refresh" content="5" >
+    <meta http-equiv="refresh" content="60" >
     <link rel="stylesheet" type="text/css" href="feed.css" />
   </head>
   <body>
+  <div id="headerposts">
     <div id="header">
       <h1>Collegio Timpano @ social</h1>
       by Enrico Polesel
     </div>
+    <div id="posts">
 """
 
     for post in sorted_posts:
         htmlcode+=generatepost(post)
 
-    htmlcode += """    <div id="footer">
+    htmlcode += """    </div>
+    </div>
+    <div id="footer">
 Page generated with <a href="http://github.com/epol/socialsignage/">
 socialsignage</a>, a GPL licensed software written by
 <a href="http://uz.sns.it/~enrico/">Enrico Polesel</a>.

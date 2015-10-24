@@ -33,8 +33,10 @@ def generatepost(post):
     </div>
   </div>
   <div id="body">
-    <p>{escapedtext}</p>
-    {imagecode}
+    <p>
+      {imagecode}
+      {escapedtext}
+    </p>
   </div>
 </div>
 """.format(**newpost)

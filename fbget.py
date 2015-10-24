@@ -14,8 +14,13 @@ def get_profile_picture(fbkey, userid):
             return data['data']['url']
 
 
-def get_topage(fbkey):
-    r = requests.get('https://graph.facebook.com/v2.2/587747891351295/tagged',params={'access_token':fbkey})
+def get_topage(fbkey,needed_fb_fields=None):
+    if needed_fb_fields is []:
+        needed_fb_fields = None
+    request_url = 'https://graph.facebook.com/v2.2/587747891351295/tagged'
+    if needed_fb_fields is not None:
+        request_url += '?fields='+ ','.join(needed_fb_fields)
+    r = requests.get(request_url,params={'access_token':fbkey})
     posts = json.loads(r.text)
     if 'error' in posts:
         print ('Error in getting posts to page')
@@ -23,8 +28,13 @@ def get_topage(fbkey):
     else:
         return posts['data']
 
-def get_frompage(fbkey):
-    r = requests.get('https://graph.facebook.com/v2.2/587747891351295/posts',params={'access_token':fbkey})
+def get_frompage(fbkey,needed_fb_fields=None):
+    if needed_fb_fields is []:
+        needed_fb_fields = None
+    request_url = 'https://graph.facebook.com/v2.2/587747891351295/posts'
+    if needed_fb_fields is not None:
+        request_url += '?fields='+ ','.join(needed_fb_fields)
+    r = requests.get(request_url,params={'access_token':fbkey})
     posts = json.loads(r.text)
     if 'error' in posts:
         print ('Error in getting posts from page')
@@ -51,8 +61,8 @@ def elab(fbkey,post):
             out['author_pic'] = None
     else:
         return None
-    if 'picture' in post:
-        out['image'] = post['picture']
+    if 'full_picture' in post:
+        out['image'] = post['full_picture']
     else:
         out['image'] = None
     if out['text'] is '' and out['image'] is None:
@@ -61,8 +71,13 @@ def elab(fbkey,post):
 
 def get(fbkey):
     posts = []
-    posts += get_topage(fbkey)
-    posts += get_frompage(fbkey)
+    needed_fb_fields = ["created_time","message","from","full_picture"]
+    toposts = get_topage(fbkey,needed_fb_fields)
+    fromposts = get_frompage(fbkey,needed_fb_fields)
+    toposts = toposts[:7]
+    fromposts = fromposts[:7]
+    posts += toposts
+    posts += fromposts
     out = []
     for post in posts:
         temp = elab(fbkey,post)

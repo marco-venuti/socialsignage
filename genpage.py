@@ -16,23 +16,23 @@ def generatepost(post):
     if post['image'] is None:
         newpost['imagecode'] = ""
     else:
-        newpost['imagecode'] = "<img src=\""+post['image']+"\">" 
+        newpost['imagecode'] = "<img src=\""+post['image']+"\" alt=\"Post image\">" 
     if post['author_pic'] is None:
         newpost['author_piccode'] = ""
     else:
         newpost['author_piccode'] = "<img src=\""+post['author_pic']+"\" alt=\"{author_name} profile picture\">"
     newpost['escapedtext'] = html.escape(post['text'][:320]).replace('\n','<br>')
-    return """  <div id="post">
-  <div id="post_header">
-    <div id="author">
+    return """  <div class="post">
+  <div class="post_header">
+    <div class="author">
       {author_piccode}
       {author_name}
     </div>
-    <div id="time">
+    <div class="time">
       {time}
     </div>
   </div>
-  <div id="body">
+  <div class="body">
     <p>
       {imagecode}
       {escapedtext}
@@ -51,9 +51,11 @@ def main():
     # posts += twget.get(twkey)
     sorted_posts = sorted(posts,key = lambda post: post['time'])
     sorted_posts.reverse()
-
+    sorted_posts = sorted_posts[0:10]
+    
     htmlcode = ""
-    htmlcode += """<html>
+    htmlcode += """<!DOCTYPE html>
+<html>
   <head>
     <title>Social network posts for Collegio Timpano</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">

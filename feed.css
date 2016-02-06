@@ -24,7 +24,7 @@ body {
 }
 
 
-#post {
+.post {
     display: table;
     max-width: 740px;
     height: auto;
@@ -37,7 +37,7 @@ body {
     color: #330033;
 }
 
-#post_header {
+.post_header {
     display: table;
     border-style: dashed;
     border-width: 1px;
@@ -46,19 +46,19 @@ body {
     padding: 3px;
 }
 
-#author {
+.author {
     display: table-cell;
     padding: 3px;
     width: 540px;
     font-size: 18pt;
 }
 
-#author img {
+.author img {
     width: 30px;
     height: 30px;
 }
 
-#time {
+.time {
     display: table-cell,block;
     padding: 3px;
     width: 200px;
@@ -66,11 +66,11 @@ body {
     text-align: right;
 }
 
-#body {
+.body {
 
 }
 
-#body img {
+.body img {
     max-width: 1000px;
     max-height: 300px;
     float:right;

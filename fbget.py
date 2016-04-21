@@ -7,7 +7,7 @@ import sys
 
 
 def get_profile_picture(fbkey, userid):
-    r = requests.get('https://graph.facebook.com/v2.2/'+str(userid)+'/picture',params={'access_token':fbkey,'redirect':'false'})
+    r = requests.get('https://graph.facebook.com/v2.6/'+str(userid)+'/picture',params={'access_token':fbkey,'redirect':'false'})
     data = json.loads(r.text)
     if 'data' in data:
         if 'url' in data['data']:
@@ -17,7 +17,7 @@ def get_profile_picture(fbkey, userid):
 def get_topage(fbkey,needed_fb_fields=None):
     if needed_fb_fields is []:
         needed_fb_fields = None
-    request_url = 'https://graph.facebook.com/v2.2/587747891351295/tagged'
+    request_url = 'https://graph.facebook.com/v2.6/587747891351295/tagged'
     if needed_fb_fields is not None:
         request_url += '?fields='+ ','.join(needed_fb_fields)
     r = requests.get(request_url,params={'access_token':fbkey})
@@ -31,7 +31,7 @@ def get_topage(fbkey,needed_fb_fields=None):
 def get_frompage(fbkey,needed_fb_fields=None):
     if needed_fb_fields is []:
         needed_fb_fields = None
-    request_url = 'https://graph.facebook.com/v2.2/587747891351295/posts'
+    request_url = 'https://graph.facebook.com/v2.6/587747891351295/posts'
     if needed_fb_fields is not None:
         request_url += '?fields='+ ','.join(needed_fb_fields)
     r = requests.get(request_url,params={'access_token':fbkey})

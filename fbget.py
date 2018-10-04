@@ -23,6 +23,7 @@ def get_topage(fbkey,needed_fb_fields=None):
     r = requests.get(request_url,params={'access_token':fbkey})
     posts = json.loads(r.text)
     if 'error' in posts:
+        print (request_url)
         print ('Error in getting posts to page')
         return []
     else:

@@ -22,24 +22,13 @@ def generatepost(post):
     else:
         newpost['author_piccode'] = "<img src=\""+post['author_pic']+"\" alt=\"{author_name} profile picture\">"
     newpost['escapedtext'] = html.escape(post['text'][:320]).replace('\n','<br>')
-    return """  <div class="post">
-  <div class="post_header">
-    <div class="author">
-      {author_piccode}
-      {author_name}
-    </div>
-    <div class="time">
-      {time}
-    </div>
-  </div>
-  <div class="body">
-    <p>
-      {imagecode}
-      {escapedtext}
-    </p>
-  </div>
-</div>
-""".format(**newpost)
+    return """<div class="bs-callout bs-callout-primary">
+		<div class="flex-horizontal">
+			<h4>{author_piccode}{author_name}</h4>
+			<div style="color: grey">{time}</div>
+		</div>
+			<p>{escapedtext}{imagecode}</p>
+	</div>""".format(**newpost)
 
 
 def main():
@@ -56,33 +45,37 @@ def main():
     htmlcode = ""
     htmlcode += """<!DOCTYPE html>
 <html>
-  <head>
-    <title>Social network posts for Collegio Timpano</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="refresh" content="60" >
-    <link rel="stylesheet" type="text/css" href="feed.css" />
-  </head>
-  <body>
-  <div id="headerposts">
-    <div id="header">
-      <h1>Collegio Timpano @ social</h1>
-      by Enrico Polesel
-    </div>
-    <div id="posts">
-"""
+<head>
+	<title>Social network posts for Collegio Timpano</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="refresh" content="60" >
+
+	<link rel="stylesheet" href="bootstrap.css" type="text/css"/>
+	<link rel="stylesheet" href="bs-callout.css" type="text/css"/>
+	<link rel="stylesheet" href="style.css" type="text/css"/>
+	
+</head>
+ 
+<body style="background-color: transparent;">
+  
+<div class="container">
+	<div style="color: #ccccff;">
+		<h3 class="text-center" style="margin-bottom: 0px">Collegio Timpano @ social</h3>
+		<h6 class="text-center" style="margin-top: 0px; margin-bottom: 0px;">by Enrico Polesel</h6>
+	</div>"""
 
     for post in sorted_posts:
         htmlcode+=generatepost(post)
 
-    htmlcode += """    </div>
-    </div>
-    <div id="footer">
-Page generated with <a href="http://github.com/epol/socialsignage/">
-socialsignage</a>, a GPL licensed software written by
-<a href="http://uz.sns.it/~enrico/">Enrico Polesel</a>.
-    </div>
-  </body>
-</html> """
+    htmlcode += """<h6 class="footer navbar-fixed-bottom">
+	Page generated with <a href="http://github.com/epol/socialsignage/">socialsignage</a>, a GPL licensed software written by <a href="http://uz.sns.it/~enrico/">Enrico Polesel</a>.
+	</h6>
+
+</div>
+    
+</body>
+</html>"""
+
     outfile = open('feed.html','wb')
     outfile.write(htmlcode.encode('utf-8'))
     outfile.close()

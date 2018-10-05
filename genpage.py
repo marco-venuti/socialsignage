@@ -55,9 +55,7 @@ def main():
 	<link rel="stylesheet" href="style.css" type="text/css"/>
 	
 </head>
- 
 <body style="background-color: transparent;">
-  
 <div class="container">
 	<div style="color: #ccccff;">
 		<h3 class="text-center" style="margin-bottom: 0px">Collegio Timpano @ social</h3>
@@ -70,9 +68,7 @@ def main():
     htmlcode += """<h6 class="footer navbar-fixed-bottom">
 	Page generated with <a href="http://github.com/epol/socialsignage/">socialsignage</a>, a GPL licensed software written by <a href="http://uz.sns.it/~enrico/">Enrico Polesel</a>.
 	</h6>
-
 </div>
-    
 </body>
 </html>"""
 
